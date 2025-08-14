@@ -1,0 +1,25 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+  background-image: url(./assets/photo-1476514525535-07fb3b4ae5f1.avif);
+}
+
+h1{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+  text-shadow: 10px;
+  font-weight: 20%;
+  color: rgb(22, 18, 9);
+  text-align: center;
+}
+
+p{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 20%;
+  margin: 10%;
+  font-size: bold;
+}
