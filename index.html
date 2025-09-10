@@ -1,18 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Nubia Tours - Simulador JS</title>
-  <link rel="stylesheet" href="./styles/style.css">
+    <meta charset="UTF-8">
+    <title>Nubia Tours</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <h1>Nubia Tours</h1>
-  <p>
-    Este simulador permite al usuario seleccionar un destino turístico, elegir cantidad de personas y método de pago.
-    Se aplican descuentos según la cantidad de personas, promociones por medio de pago y días especiales.
-    El cálculo final se muestra con alertas y consola.
-  </p>
+  <header>
+      <h1 id="titulo"> Nubia Tours</h1>
+      <p>Planificá tu viaje con descuentos y promos</p>
+  </header>
 
-  <script src="nuvia.js"></script>
+  <main>
+    <section>
+      <h2>Reservar Viaje</h2>
+      <form id="formViaje">
+          <label for="destino">Destino:</label>
+          <select id="destino">
+              <option value="Brasil">Brasil - $500</option>
+              <option value="México">México - $700</option>
+              <option value="España">España - $1200</option>
+              <option value="Inglaterra">Inglaterra - $2700</option>
+              <option value="EE.UU">EE.UU - $1600</option>
+              <option value="Italia">Italia - $3200</option>
+          </select>
+
+              <label for="personas">Cantidad de personas:</label>
+              <input type="number" id="personas" min="1" required>
+
+              <label for="pago">Método de pago:</label>
+              <select id="pago">
+                  <option value="efectivo">Efectivo (10% OFF)</option>
+                  <option value="tarjeta">Tarjeta (15% interés)</option>
+              </select>
+
+              <button type="submit">Calcular precio</button>
+          </form>
+      </section>
+
+      <section id="resultado">
+          <h2>Resultado</h2>
+          <p id="precioFinal">Aquí se mostrará el precio final</p>
+      </section>
+
+      <section id="historial">
+          <h2>Historial de viajes</h2>
+          <ul id="listaHistorial"></ul>
+          <button id="borrarHistorial">Borrar historial</button>
+      </section>
+  </main>
+
+  <footer>
+      <p>&copy; 2025 Nubia Tours - Proyecto de Mel ✈️</p>
+  </footer>
+
+  <script src="nuvia.js" defer></script>
 </body>
 </html>

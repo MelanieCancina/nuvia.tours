@@ -1,25 +1,63 @@
-*{
-  padding: 0;
-  margin: 0;
-}
-body{
-  background-image: url(./assets/photo-1476514525535-07fb3b4ae5f1.avif);
-}
-
-h1{
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bold;
-  font-style: italic;
-  text-decoration: underline;
-  text-shadow: 10px;
-  font-weight: 20%;
-  color: rgb(22, 18, 9);
-  text-align: center;
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fae3d9;
+    color: #333;
 }
 
-p{
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: 20%;
-  margin: 10%;
-  font-size: bold;
+header {
+    text-align: center;
+    background-color: #d6a4a4;
+    color: white;
+    padding: 1rem;
+}
+
+main {
+    padding: 2rem;
+    max-width: 600px;
+    margin: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+button {
+    background-color: #d6a4a4;
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #c48c8c;
+}
+
+#resultado {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#historial {
+    margin-top: 2rem;
+}
+
+#listaHistorial li {
+    background: #fff;
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    list-style: none;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
 }

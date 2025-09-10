@@ -1,43 +1,73 @@
-let misDestinos = [];
-const destinos = ["Brasil", "México", "España","Italia"];
-const precios = [5000, 7500, 1200, 8500];
+const precios = {
+    "Brasil": 500,
+    "México": 700,
+    "España": 1200,
+    "Inglaterra": 2700,
+    "EE.UU": 1600,
+    "Italia": 3200,
+};
 
-function mostrarDestinos() {
-  let mensaje = "Estos son los destinos disponibles: \n";
-  for (let i = 0; i < destinos.length; i++) {
-      mensaje += (i + 1) + ". " + destinos[i] + " - $" + precios[i] + "\n";
-  }
-  return mensaje;
-}
+const titulo = document.getElementById("titulo");
+const form = document.getElementById("formViaje");
+const resultado = document.getElementById("precioFinal");
+const listaHistorial = document.getElementById("listaHistorial");
+const borrarHistorial = document.getElementById("borrarHistorial");
 
-function calcularPrecio(indice, cantidad) {
-  return precios[indice] * cantidad;
-}
-function iniciarSimulador() {
-  alert("¡Bienvenida a Nubia Tours, vamos a planificar tu viaje!");
 
-  let opcion;
-  do {
-    opcion = prompt(mostrarDestinos() + "\n Escribe el número del destino o 'salir' para terminar:").toLowerCase();
 
-    if (opcion !== "salir") {
-      let indice = parseInt(opcion) - 1;
+titulo.addEventListener("click", () => {
+    titulo.style.color = titulo.style.color === "gold" ? "white" : "gold";
+    titulo.style.fontFamily = titulo.style.fontFamily === "cursive" ? "Arial" : "cursive";
+});
 
-      if (destinos[indice]) {
-        let cantidad = parseInt(prompt("¿Cuántas personas viajan?"));
-        let precioFinal = calcularPrecio(indice, cantidad);
 
-        misDestinos.push(destinos[indice]);
-        console.log(`Agregaste: ${destinos[indice]} | Total para ${cantidad} personas: $${precioFinal}`);
-        } else {
-          alert("Opción inválida, intenta otra vez.");
-        }
+document.addEventListener("DOMContentLoaded", () => {
+    let historial = JSON.parse(localStorage.getItem("historial")) || [];
+    historial.forEach(viaje => mostrarEnHistorial(viaje));
+});
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let destino = document.getElementById("destino").value;
+    let personas = parseInt(document.getElementById("personas").value);
+    let pago = document.getElementById("pago").value;
+
+    let precioBase = precios[destino] * personas;
+
+    
+    if (pago === "efectivo") {
+        precioBase *= 0.9; // 10% descuento
+    } else if (pago === "tarjeta") {
+        precioBase *= 1.15; // 15% interés
     }
 
-  } while (opcion !== "salir");
+    resultado.textContent = `Precio final para ${personas} persona(s) a ${destino}: $${precioBase}`;
+    resultado.style.color = pago === "tarjeta" ? "red" : "green";
 
-  console.log("Tus destinos elegidos:", misDestinos);
-  alert("Gracias por usar Nubia Tours, Mel 😉");
+
+
+    let viaje = { destino, personas, pago, precioBase };
+    guardarHistorial(viaje);
+    mostrarEnHistorial(viaje);
+});
+
+
+function guardarHistorial(viaje) {
+    let historial = JSON.parse(localStorage.getItem("historial")) || [];
+    historial.push(viaje);
+    localStorage.setItem("historial", JSON.stringify(historial));
+}
+function mostrarEnHistorial(viaje) {
+    let li = document.createElement("li");
+    li.textContent = `${viaje.personas} persona(s) a ${viaje.destino} pagando con ${viaje.pago} → $${viaje.precioBase}`;
+    listaHistorial.appendChild(li);
 }
 
-iniciarSimulador();
+
+borrarHistorial.addEventListener("click", () => {
+    localStorage.removeItem("historial");
+    listaHistorial.innerHTML = "";
+    resultado.textContent = "Historial borrado 👋"; //historial
+});
