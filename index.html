@@ -1,59 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Nubia Tours</title>
-    <link rel="stylesheet" href="styles/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nubia Tours — Proyecto Final</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
 </head>
 <body>
   <header>
-      <h1 id="titulo"> Nubia Tours</h1>
-      <p>Planificá tu viaje con descuentos y promos</p>
+    <div class="header-inner">
+      <div class="logo">✈️</div>
+      <div class="titles">
+        <h1 id="titulo">Nubia Tours</h1>
+        <p class="subtitulo">Tu viaje soñado al mejor precio</p>
+      </div>
+    </div>
   </header>
 
   <main>
+    <section class="card productos-card">
+      <h2 class="productos-titulo">Explorá nuestros destinos</h2>
+      <div class="tabs">
+        <button class="tab active" data-cat="Argentina">Argentina</button>
+        <button class="tab" data-cat="Europa">Europa</button>
+      </div>
+      <div id="productos-container" class="productos"></div>
+    </section>
+
+    <section class="card">
+      <h2>Calculá tu viaje</h2>
+      <form id="formulario" aria-label="Formulario de reserva">
+        <label for="destino">Destino:</label>
+        <select id="destino" required>
+          <option value="">-- Selecciona un destino --</option>
+        </select>
+
+        <label for="personas">Cantidad de personas:</label>
+        <input id="personas" type="number" min="1" value="1" required>
+
+        <label for="pago">Método de pago:</label>
+        <select id="pago" required>
+          <option value="">-- Selecciona método de pago --</option>
+          <option value="Efectivo">Efectivo (-10%)</option>
+          <option value="Débito">Débito (-5%)</option>
+          <option value="Crédito">Crédito (+10%)</option>
+        </select>
+
+        <div class="actions">
+          <button type="submit" class="btn">Calcular precio</button>
+          <button type="button" id="limpiarForm" class="btn ghost">Limpiar</button>
+        </div>
+      </form>
+      <div id="resultado" class="resultado" aria-live="polite"></div>
+    </section>
+    
+    <section class="card historial">
+      <div class="carrito-box">
+        <h2>Carrito</h2>
+        <div id="carrito"></div>
+        <div class="hist-actions">
+          <button id="borrarCarrito" class="btn borrar">Borrar carrito</button>
+        </div>
+        <div>
+          <button class="btn comprar"> Comprar Viaje</button>
+        </div>
+      </div>
+    </section>
+
     <section>
-      <h2>Reservar Viaje</h2>
-      <form id="formViaje">
-          <label for="destino">Destino:</label>
-          <select id="destino">
-              <option value="Brasil">Brasil - $500</option>
-              <option value="México">México - $700</option>
-              <option value="España">España - $1200</option>
-              <option value="Inglaterra">Inglaterra - $2700</option>
-              <option value="EE.UU">EE.UU - $1600</option>
-              <option value="Italia">Italia - $3200</option>
-          </select>
+      <div class="historial-box">
+        <h2>Historial de viajes</h2>
+        <div id="historial"></div>
+        <div class="hist-actions">
+          <button id="borrarHistorial" class="btn borrar">Borrar historial</button>
+        </div>
+      </div>
+    </section>
 
-              <label for="personas">Cantidad de personas:</label>
-              <input type="number" id="personas" min="1" required>
-
-              <label for="pago">Método de pago:</label>
-              <select id="pago">
-                  <option value="efectivo">Efectivo (10% OFF)</option>
-                  <option value="tarjeta">Tarjeta (15% interés)</option>
-              </select>
-
-              <button type="submit">Calcular precio</button>
-          </form>
-      </section>
-
-      <section id="resultado">
-          <h2>Resultado</h2>
-          <p id="precioFinal">Aquí se mostrará el precio final</p>
-      </section>
-
-      <section id="historial">
-          <h2>Historial de viajes</h2>
-          <ul id="listaHistorial"></ul>
-          <button id="borrarHistorial">Borrar historial</button>
-      </section>
   </main>
 
   <footer>
-      <p>&copy; 2025 Nubia Tours - Proyecto de Mel ✈️</p>
+    <div class="footer-inner">🌍 Nubia Tours - Proyecto Final Mel</div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="nuvia.js" defer></script>
 </body>
 </html>

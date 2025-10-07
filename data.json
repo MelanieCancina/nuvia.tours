@@ -1,0 +1,12 @@
+[
+  { "id": 1, "nombre": "Bariloche", "categoria": "Argentina", "precio": 50000 },
+  { "id": 2, "nombre": "Mendoza", "categoria": "Argentina", "precio": 45000 },
+  { "id": 3, "nombre": "Córdoba", "categoria": "Argentina", "precio": 40000 },
+  { "id": 4, "nombre": "Ushuaia", "categoria": "Argentina", "precio": 65000 },
+  { "id": 5, "nombre": "El Calafate", "categoria": "Argentina", "precio": 60000 },
+  { "id": 6, "nombre": "París", "categoria": "Europa", "precio": 120000 },
+  { "id": 7, "nombre": "Roma", "categoria": "Europa", "precio": 110000 },
+  { "id": 8, "nombre": "Madrid", "categoria": "Europa", "precio":180000},
+  { "id": 9, "nombre": "Grecia", "categoria": "Europa", "precio": 380000 },
+  { "id": 10, "nombre": "Noruega", "categoria": "Europa", "precio": 290000 }
+]
